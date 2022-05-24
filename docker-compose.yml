@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  biblioteca_service:
+    build: ./app/
+    ports:
+      - 8085:8000
+    volumes:
+      - ./app:/usr/src/app/api_biblioteca
