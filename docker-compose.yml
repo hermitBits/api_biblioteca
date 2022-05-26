@@ -1,9 +1,35 @@
 version: '3.9'
 
+volumes:
+  mysql_data:
+    name: mysql_data
+    external: true
+
+networks:
+  teste:
+    name: teste
+
 services:
   biblioteca_service:
     build: ./app/
     ports:
       - 8085:8000
+      - 8001:8001
     volumes:
       - ./app:/usr/src/app/api_biblioteca
+    networks:
+      - teste
+    depends_on:
+      - mysqlsrv
+
+  mysqlsrv:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: c4r410
+      MYSQL_DATABASE: biblioteca_api
+    ports:
+      - "3306:3306" 
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - teste
