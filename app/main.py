@@ -1,15 +1,13 @@
-from typing import Union
+from fastapi import Depends, FastAPI
+from sqlalchemy.orm import Session
 
-from fastapi import FastAPI
+from database import SessionLocal, engine
 
 app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
