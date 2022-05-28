@@ -8,14 +8,15 @@ set -o pipefail
 
 mysql_ready() {
 python << END
+from os import getenv
 import sys
 import mysql.connector
 from mysql.connector import Error
 try:
-    connection = mysql.connector.connect(host="mysqlsrv",
-                                            database="biblioteca_api",
-                                            user="root",
-                                            password="c4r410")
+    connection = mysql.connector.connect(host=f"{getenv('MYSQL_SERVICE')}",
+                                            database=f"{getenv('MYSQL_DATABASE')}",
+                                            user=f"{getenv('MYSQL_USER')}",
+                                            password=f"{getenv('MYSQL_ROOT_PASSWORD')}")
 except:
     sys.exit(-1)
 sys.exit(0)

@@ -4,3 +4,4 @@ pydantic==1.9.1
 sqlalchemy==1.4.36
 mysqlclient==2.1.0
 mysql-connector-python
+ipdb
