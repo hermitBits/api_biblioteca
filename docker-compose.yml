@@ -16,10 +16,11 @@ services:
       - 8085:8000
       - 8001:8001
     environment:
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: c4r410
-      MYSQL_DATABASE: biblioteca_api
-      MYSQL_SERVICE: mysqlsrv
+      DATABASE_USER: root
+      DATABASE_PASSWORD: c4r410
+      DATABASE_NAME: biblioteca_api
+      DATABASE_SERVER: mysqlsrv
+      DATABASE_PORT: 3306
     volumes:
       - ./app:/usr/src/app/api_biblioteca
     networks:

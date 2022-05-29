@@ -8,20 +8,14 @@ set -o pipefail
 
 mysql_ready() {
 python << END
-from os import getenv
 import sys
-import mysql.connector
-from mysql.connector import Error
-try:
-    connection = mysql.connector.connect(host=f"{getenv('MYSQL_SERVICE')}",
-                                            database=f"{getenv('MYSQL_DATABASE')}",
-                                            user=f"{getenv('MYSQL_USER')}",
-                                            password=f"{getenv('MYSQL_ROOT_PASSWORD')}")
-except:
-    sys.exit(-1)
+from database.utils import check_db_connected 
+if check_db_connected() is False:
+  sys.exit(-1)
 sys.exit(0)
 END
 }
+
 until mysql_ready; do
   >&2 echo 'Waiting for Mysql to become available...'
   sleep 1

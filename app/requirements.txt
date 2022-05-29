@@ -4,5 +4,5 @@ pydantic==1.9.1
 sqlalchemy==1.4.36
 mysqlclient==2.1.0
 mysql-connector-python==8.0.29
-ipdb
 alembic==1.7.7
+ipdb
