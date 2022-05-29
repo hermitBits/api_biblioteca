@@ -1,3 +1,6 @@
-from autores import AutorSchema
-from editoras import EditoraSchema
-from obras import ObraSchema
+from .autores import AutorSchema
+from .autores import CreateAutorSchema
+from .autores import ShowAutorSchema
+
+from .editoras import EditoraSchema
+from .obras import ObraSchema
