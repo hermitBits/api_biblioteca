@@ -1,5 +1,5 @@
-from pydantic import BaseModel
-
+from typing import Iterable
+from pydantic import BaseModel, validator
 
 class AutorSchema(BaseModel):
     nome: str
