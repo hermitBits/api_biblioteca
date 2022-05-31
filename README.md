@@ -4,12 +4,11 @@
 - **pydantic** - dto 
 - **SqlAlchemy** - orm
 - **Alambic** - migrates
-- **DB** - inmemory, mysql ou qualquer outro db
+- **DB** - mysql
 - **Konda** - Api Gateway 
 - **Redis** - Api cache
 ***
 **Rotas**:
-
 **Obras**
 - [POST] https://url_api_gateway/obras/
 - [GET] https://url_api_gateway/obras/<id_obra>
@@ -37,10 +36,9 @@
 **Contrato:  Obras -> PUT ou POST**:
 ```json
 {
-	"titulo": "string"
-	"editora": "int",
-	"foto": "string",
-	"autores": ["int", "int"]
+	"titulo": "string",
+	"editora_id": "int",
+	"autores": "int"
 }
 ```
 
@@ -48,7 +46,6 @@
 ```json
 {
 	"nome": "string"
-	"foto": "string",
 }
 ```
 
@@ -56,7 +53,6 @@
 ```json
 {
 	"nome": "string"
-	"foto": "string"
 }
 ```
 ***
@@ -86,40 +82,9 @@
 	- deletar <id>
 
 ***
-**Estruturas de pastas**
-
-```sh
-app/
-	database/
-		db.py
-		alembic/
-			env.py
-			README
-			script.py.mako
-			versions/
-	models/
-		obra.py
-		autor.py
-		editora.py
-	schemas/
-		obra.py
-		autor.py
-		editora.py
-	controllers/
-		obra.py
-		autor.py
-		editora.py
-	routes.py
-	main.py
-	README
-	Dockerfile
-docker-compose.yml
-```
-***
 Infraestrutura
 ![infra.jpg](_resources/infra.jpg)
 ***
 **Autenticação**
 Vai ficar a cargo da API Gateway.
-Protocolo Aut0
 ***

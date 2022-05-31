@@ -1,5 +1,5 @@
 Migrate:
 $ alembic revision --autogenerate
 
-MakeMigatre: 
+MakeMigrate: 
 $ alembic upgrade head 
